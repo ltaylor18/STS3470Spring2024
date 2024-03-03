@@ -5,6 +5,7 @@
 
 #See also: https://www.youtube.com/watch?v=AjbREbUkspo 
 
+#Chunk #1
 library(tidyverse)
 
 #################################################################
@@ -15,6 +16,7 @@ library(tidyverse)
 #2. Be sure to copy your code below:                            #
 #################################################################
 
+#Chunk #2
 frogs <-  rename(frogs,
                  day = Day,
                  frog_type = `rent/ind/pro`,
@@ -36,10 +38,12 @@ frogs <-  rename(frogs,
   ) %>%
   select(row, everything())
 
+#Chunk #3
 ## dbl --> int
 frogs <- frogs %>%
   mutate(jump_n = as.integer(jump_n))
 
+#Chunk #4
 ## frog_type
 frogs <- frogs %>%
   mutate(
