@@ -65,3 +65,44 @@ D <- ggplot(out.100,aes(x=mean.100))+
 D
 
 A/B/C/D
+
+
+
+
+
+
+
+
+##############Investigation #2#####################
+library(patchwork)
+library(tidyverse)
+set.seed(2320)
+mymean <- ___ #Fill in the blank!
+mysd <- ___ #Fill in the blank!
+x <- rnorm(5000,mymean,mysd)
+xbar <- apply(matrix(x,nrow=1000),1,mean)
+
+myxdata <- data.frame(xbar=xbar)
+xbarplot <- ggplot(myxdata,aes(x=xbar))+
+  geom_histogram(aes(y=after_stat(density)),
+                 color="white",
+                 bins=30)+
+  stat_function(fun=dnorm,
+                args=list(mean=mymean,sd=mysd/sqrt(5)),
+                size=1.25)+
+  labs(title="Histogram of X-Bar Values")
+xbarplot
+#Check: length(xbar)
+z <- (xbar-mymean)/(mysd/sqrt(5))
+myzdata <- data.frame(z=z)
+zplot <- ggplot(myzdata,aes(x=z)) + 
+  geom_histogram(aes(y=after_stat(density)),
+                 color="white",
+                 bins=30) + 
+  stat_function(fun=dnorm,
+                args=list(mean=0,sd=1),
+                size=1.25)+
+  labs(title="Histogram of Z")
+zplot
+
+xbarplot/zplot
