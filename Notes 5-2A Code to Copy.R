@@ -232,15 +232,16 @@ var(mychi)
 
 
 
-x <- seq(0.1,20,.01)
-y1 <- df(x,3,126)
-y2 <- df(x,6,45)
-y3 <- df(x,1,9)
-t.df <- data.frame(x=x,y1=y1,y2=y2,y3=y3)
-ggplot(t.df,aes(x=x,y=y1)) +
+x <- seq(0.001,70,.01)
+y1 <- dchisq(x,3)
+y2 <- dchisq(x,45)
+y3 <- dchisq(x,19)
+chisq.df <- data.frame(x=x,y1=y1,y2=y2,y3=y3)
+ggplot(chisq.df,aes(x=x,y=y1)) +
   geom_line(color="pink",linetype=1,size=1.25)+
   geom_line(aes(y=y2),color="purple",linetype=2,size=1.25)+
-  geom_line(aes(y=y3),color="orange",linetype=3,size=1.25)
+  geom_line(aes(y=y3),color="orange",linetype=3,size=1.25) 
+
 
 
 
